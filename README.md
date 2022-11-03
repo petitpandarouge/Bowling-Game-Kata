@@ -20,3 +20,6 @@ Ecrire une classe Bowling possédant à minima 1 méthode :
 
 ## Outils d'aide au calcul de score
 [bowling-score-calculator](https://www.sportcalculators.com/bowling-score-calculator)
+
+## Proposition de solution
+[Uncle Bob](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata)
