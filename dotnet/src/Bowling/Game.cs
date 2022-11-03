@@ -1,8 +1,17 @@
-﻿namespace Bowling
+﻿using System.Linq;
+
+namespace Bowling
 {
     public class Game
     {
-        public int Score(int[] quilles) => 0;
+        public int Score(int[] quilles)
+        {
+            if (quilles.Any() == false)
+            {
+                return 0;
+            }
 
+            return 1;
+        }
     }
 }
