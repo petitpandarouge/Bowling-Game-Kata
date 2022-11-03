@@ -32,22 +32,99 @@ namespace Bowling.Tests
         }
 
         [Test]
-        [TestCase(0)]
-        [TestCase(1)]
-        [TestCase(2)]
-        [TestCase(3)]
-        [TestCase(4)]
-        [TestCase(5)]
-        [TestCase(6)]
-        [TestCase(7)]
-        [TestCase(8)]
-        [TestCase(9)]
-        [TestCase(10)]
         [Parallelizable(ParallelScope.All)]
-        public void Given_a_game_with_one_lance_Then_score_Should_be_quille_count(int quilles)
+        public void Given_a_game_with_one_lance_Then_score_Should_be_quille_count(
+            [Range(0, 10, 1)] int quilles)
         {
             // Arrange
             var oneLance = new int[] { quilles };
+
+            // Act
+            var score = _game.Score(oneLance);
+
+            // Assert
+            score
+                .Should()
+                .Be(oneLance.Sum(), "Le score d'un tour est le nombre total de quilles renversées");
+        }
+
+        static int[][] Given_a_game_with_one_tour_Then_score_Should_be_quille_count_Cases =
+        {
+            new int[] { 0 , 0 },
+            new int[] { 0 , 1 },
+            new int[] { 0 , 2 },
+            new int[] { 0 , 3 },
+            new int[] { 0 , 4 },
+            new int[] { 0 , 5 },
+            new int[] { 0 , 6 },
+            new int[] { 0 , 7 },
+            new int[] { 0 , 8 },
+            new int[] { 0 , 9 },
+            new int[] { 0 , 10 },
+            new int[] { 1 , 0 },
+            new int[] { 1 , 1 },
+            new int[] { 1 , 2 },
+            new int[] { 1 , 3 },
+            new int[] { 1 , 4 },
+            new int[] { 1 , 5 },
+            new int[] { 1 , 6 },
+            new int[] { 1 , 7 },
+            new int[] { 1 , 8 },
+            new int[] { 1 , 9 },
+            new int[] { 2 , 0 },
+            new int[] { 2 , 1 },
+            new int[] { 2 , 2 },
+            new int[] { 2 , 3 },
+            new int[] { 2 , 4 },
+            new int[] { 2 , 5 },
+            new int[] { 2 , 6 },
+            new int[] { 2 , 7 },
+            new int[] { 2 , 8 },
+            new int[] { 3 , 0 },
+            new int[] { 3 , 1 },
+            new int[] { 3 , 2 },
+            new int[] { 3 , 3 },
+            new int[] { 3 , 4 },
+            new int[] { 3 , 5 },
+            new int[] { 3 , 6 },
+            new int[] { 3 , 7 },
+            new int[] { 4 , 0 },
+            new int[] { 4 , 1 },
+            new int[] { 4 , 2 },
+            new int[] { 4 , 3 },
+            new int[] { 4 , 4 },
+            new int[] { 4 , 5 },
+            new int[] { 4 , 6 },
+            new int[] { 5 , 0 },
+            new int[] { 5 , 1 },
+            new int[] { 5 , 2 },
+            new int[] { 5 , 3 },
+            new int[] { 5 , 4 },
+            new int[] { 5 , 5 },
+            new int[] { 6 , 0 },
+            new int[] { 6 , 1 },
+            new int[] { 6 , 2 },
+            new int[] { 6 , 3 },
+            new int[] { 6 , 4 },
+            new int[] { 7 , 0 },
+            new int[] { 7 , 1 },
+            new int[] { 7 , 2 },
+            new int[] { 7 , 3 },
+            new int[] { 8 , 0 },
+            new int[] { 8 , 1 },
+            new int[] { 8 , 2 },
+            new int[] { 9 , 0 },
+            new int[] { 9 , 1 },
+            new int[] { 10 , 0 }
+        };
+
+        [Test]
+        [TestCaseSource(nameof(Given_a_game_with_one_tour_Then_score_Should_be_quille_count_Cases))]
+        [Parallelizable(ParallelScope.All)]
+        public void Given_a_game_with_one_tour_Then_score_Should_be_quille_count(int quillesFirstLance, int quillesSecondLance)
+        {
+            // Arrange
+            var oneLance = new int[] { quillesFirstLance, quillesSecondLance };
 
             // Act
             var score = _game.Score(oneLance);
