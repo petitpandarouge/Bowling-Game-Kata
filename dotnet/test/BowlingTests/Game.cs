@@ -1,12 +1,10 @@
-using Bowling;
+using FluentAssertions;
 using NUnit.Framework;
-using Shouldly;
-using System.Linq;
 using System;
 
 namespace Bowling.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class GameTests
     {
 
@@ -16,7 +14,7 @@ namespace Bowling.Tests
             Game game = new();
             var noPoint = Array.Empty<int>();
 
-            game.Score(noPoint).ShouldBe(0, "Une partie vide doit retourner un score nul");
+            game.Score(noPoint).Should().Be(0, "Une partie vide doit retourner un score nul");
 
         }
     }
