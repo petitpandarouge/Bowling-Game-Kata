@@ -124,15 +124,15 @@ namespace Bowling.Tests
         public void Given_a_game_with_one_tour_Then_score_Should_be_quille_count(int quillesFirstLance, int quillesSecondLance)
         {
             // Arrange
-            var oneLance = new int[] { quillesFirstLance, quillesSecondLance };
+            var oneTour = new int[] { quillesFirstLance, quillesSecondLance };
 
             // Act
-            var score = _game.Score(oneLance);
+            var score = _game.Score(oneTour);
 
             // Assert
             score
                 .Should()
-                .Be(oneLance.Sum(), "Le score d'un tour est le nombre total de quilles renversées");
+                .Be(oneTour.Sum(), "Le score d'un tour est le nombre total de quilles renversées");
         }
     }
 }
