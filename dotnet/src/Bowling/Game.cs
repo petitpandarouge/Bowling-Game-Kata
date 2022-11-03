@@ -11,7 +11,7 @@ namespace Bowling
                 return 0;
             }
 
-            return 1;
+            return quilles[0];
         }
     }
 }
