@@ -7,15 +7,21 @@ namespace Bowling.Tests
     [TestFixture]
     public class GameTests
     {
-
         [Test]
-        public void Given_an_empty_game_Then_score_should_be_0()
+        public void Given_an_empty_game_Then_score_Should_be_0()
         {
+            // Arrange
             Game game = new();
             var noPoint = Array.Empty<int>();
 
-            game.Score(noPoint).Should().Be(0, "Une partie vide doit retourner un score nul");
+            // Act
+            // Nothing to do.
 
+            // Assert
+            game
+                .Score(noPoint)
+                .Should()
+                .Be(0);
         }
     }
 }
