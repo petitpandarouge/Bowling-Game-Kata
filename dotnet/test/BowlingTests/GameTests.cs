@@ -224,7 +224,7 @@ namespace Bowling.Tests
 
         [Test]
         [Parallelizable(ParallelScope.All)]
-        public void Given_a_tour_with_spare_Then_score_Should_take_in_account_quilles_count_new_lance(
+        public void Given_the_first_tour_with_spare_Then_score_Should_take_in_account_quilles_count_new_lance(
             [Range(0, 10, 1)] int quillesNextLance)
         {
             // Arrange
@@ -237,6 +237,26 @@ namespace Bowling.Tests
             score
                 .Should()
                 .Be(quilles.Sum() + quillesNextLance, "Le bonus pour un spare est le nombre de quilles renversées par le prochain lancé.");
+        }
+
+        [Test]
+        public void Given_two_tours_with_spare_Then_score_Should_take_in_account_quilles_count_new_lance()
+        {
+            // Arrange
+            var firstLance = 2;
+            var secondLance = 8;
+            var thirdLance = 5;
+            var fourthLance = 5;
+            var fifthLance = 6;
+            var quilles = new int[] { firstLance, secondLance, thirdLance, fourthLance, fifthLance };
+
+            // Act
+            var score = _game.Score(quilles);
+
+            // Assert
+            score
+                .Should()
+                .Be(quilles.Sum() + thirdLance + fifthLance, "Le bonus pour un spare est le nombre de quilles renversées par le prochain lancé.");
         }
     }
 }

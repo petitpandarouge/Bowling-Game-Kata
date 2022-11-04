@@ -12,10 +12,17 @@ namespace Bowling
             }
 
             int bonus = 0;
+
             var firstTour = new Tour(GetQuillesForLance(quilles, 0), GetQuillesForLance(quilles, 1));
             if (firstTour.IsSpare())
             {
                 bonus = GetQuillesForLance(quilles, 2);
+            }
+
+            var secondTour = new Tour(GetQuillesForLance(quilles, 2), GetQuillesForLance(quilles, 3));
+            if (secondTour.IsSpare())
+            {
+                bonus += GetQuillesForLance(quilles, 4);
             }
 
             return quilles.Sum() + bonus;
