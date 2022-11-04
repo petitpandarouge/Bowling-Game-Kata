@@ -19,6 +19,22 @@
                 AreAllQuillesFallenWithTwoLances();
         }
 
+        public int Score()
+        {
+            return _quillesFirstLance + _quillesSecondLance;
+        }
+
+        public int Score(Tour previousTour)
+        {
+            int score = Score();
+            if (previousTour.IsSpare())
+            {
+                score += _quillesFirstLance;
+            }
+
+            return score;
+        }
+
         private bool AreAllQuillesFallenWithTwoLances()
         {
             return _quillesFirstLance + _quillesSecondLance == QUILLES_MAX_COUNT;

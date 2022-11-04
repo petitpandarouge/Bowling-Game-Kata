@@ -11,27 +11,17 @@ namespace Bowling
                 return 0;
             }
 
-            int bonus = 0;
-
             var firstTour = new Tour(GetQuillesForLance(quilles, 0), GetQuillesForLance(quilles, 1));
-            if (firstTour.IsSpare())
-            {
-                bonus = GetQuillesForLance(quilles, 2);
-            }
-
             var secondTour = new Tour(GetQuillesForLance(quilles, 2), GetQuillesForLance(quilles, 3));
-            if (secondTour.IsSpare())
-            {
-                bonus += GetQuillesForLance(quilles, 4);
-            }
-
             var thirdTour = new Tour(GetQuillesForLance(quilles, 4), GetQuillesForLance(quilles, 5));
-            if (thirdTour.IsSpare())
-            {
-                bonus += GetQuillesForLance(quilles, 6);
-            }
+            var fourthTour = new Tour(GetQuillesForLance(quilles, 6), GetQuillesForLance(quilles, 7));
 
-            return quilles.Sum() + bonus;
+            int score = firstTour.Score() +
+                secondTour.Score(firstTour) +
+                thirdTour.Score(secondTour) +
+                fourthTour.Score(thirdTour);
+
+            return score;
         }
 
         private int GetQuillesForLance(int[] quilles, int index)
