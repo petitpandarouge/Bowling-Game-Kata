@@ -24,6 +24,7 @@ namespace Bowling
             return score;
         }
 
+        // TODO : tester cette méthode aux limites.
         private int GetQuillesForLance(int[] quilles, int index)
         {
             if (index < 0 || index >= quilles.Length)
