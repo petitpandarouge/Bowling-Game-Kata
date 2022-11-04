@@ -1,9 +1,8 @@
-﻿using System;
-
-namespace Bowling
+﻿namespace Bowling
 {
     public class Tour
     {
+        private const int QUILLES_MAX_COUNT = 10;
         private int _quillesFirstLance;
         private int _quillesSecondLance;
 
@@ -15,9 +14,19 @@ namespace Bowling
 
         public bool IsSpare()
         {
-            return 
-                _quillesFirstLance < 10 && 
-                _quillesFirstLance + _quillesSecondLance == 10;
+            return
+                AreAllQuillesFallenInTheFirstLance() == false &&
+                AreAllQuillesFallenWithTwoLances();
+        }
+
+        private bool AreAllQuillesFallenWithTwoLances()
+        {
+            return _quillesFirstLance + _quillesSecondLance == QUILLES_MAX_COUNT;
+        }
+
+        private bool AreAllQuillesFallenInTheFirstLance()
+        {
+            return _quillesFirstLance == QUILLES_MAX_COUNT;
         }
     }
 }

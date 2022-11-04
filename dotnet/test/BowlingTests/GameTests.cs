@@ -135,7 +135,7 @@ namespace Bowling.Tests
                 .Be(oneTour.Sum(), "Le score d'un tour est le nombre total de quilles renversées");
         }
 
-        static object[] Given_a_tour_Then_if_all_the_quilles_are_shot_in_two_lances_Should_be_a_spare_Cases =
+        static object[] Given_a_tour_Then_if_all_the_quilles_are_fallen_in_two_lances_Should_be_a_spare_Cases =
         {
             new object[] { 0 , 0, false },
             new object[] { 0 , 1, false },
@@ -206,9 +206,9 @@ namespace Bowling.Tests
         };
 
         [Test]
-        [TestCaseSource(nameof(Given_a_tour_Then_if_all_the_quilles_are_shot_in_two_lances_Should_be_a_spare_Cases))]
+        [TestCaseSource(nameof(Given_a_tour_Then_if_all_the_quilles_are_fallen_in_two_lances_Should_be_a_spare_Cases))]
         [Parallelizable(ParallelScope.All)]
-        public void Given_a_tour_Then_if_all_the_quilles_are_shot_in_two_lances_Should_be_a_spare(int quillesFirstLance, int quillesSecondLance, bool expectedResult)
+        public void Given_a_tour_Then_if_all_the_quilles_are_fallen_in_two_lances_Should_be_a_spare(int quillesFirstLance, int quillesSecondLance, bool expectedResult)
         {
             // Arrange
             var tour = new Tour(quillesFirstLance, quillesSecondLance);
