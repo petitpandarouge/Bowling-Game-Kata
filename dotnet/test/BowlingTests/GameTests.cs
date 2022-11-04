@@ -258,5 +258,27 @@ namespace Bowling.Tests
                 .Should()
                 .Be(quilles.Sum() + thirdLance + fifthLance, "Le bonus pour un spare est le nombre de quilles renversées par le prochain lancé.");
         }
+
+        [Test]
+        public void Given_three_tours_with_spare_Then_score_Should_take_in_account_quilles_count_new_lance()
+        {
+            // Arrange
+            var firstLance = 2;
+            var secondLance = 8;
+            var thirdLance = 5;
+            var fourthLance = 5;
+            var fifthLance = 6;
+            var sixthLance = 4;
+            var seventhLance = 9;
+            var quilles = new int[] { firstLance, secondLance, thirdLance, fourthLance, fifthLance, sixthLance, seventhLance };
+
+            // Act
+            var score = _game.Score(quilles);
+
+            // Assert
+            score
+                .Should()
+                .Be(quilles.Sum() + thirdLance + fifthLance + seventhLance, "Le bonus pour un spare est le nombre de quilles renversées par le prochain lancé.");
+        }
     }
 }
