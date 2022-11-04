@@ -221,5 +221,22 @@ namespace Bowling.Tests
                 .Should()
                 .Be(expectedResult, "Un spare est quand le joueur renverse les 10 quilles en 2 lancés lors d'un tour");
         }
+
+        [Test]
+        [Parallelizable(ParallelScope.All)]
+        public void Given_a_tour_with_spare_Then_score_Should_take_in_account_quilles_count_new_lance(
+            [Range(0, 10, 1)] int quillesNextLance)
+        {
+            // Arrange
+            var quilles = new int[] { 2, 8, quillesNextLance };
+
+            // Act
+            var score = _game.Score(quilles);
+
+            // Assert
+            score
+                .Should()
+                .Be(quilles.Sum() + quillesNextLance, "Le bonus pour un spare est le nombre de quilles renversées par le prochain lancé.");
+        }
     }
 }
